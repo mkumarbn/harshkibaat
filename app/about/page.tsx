@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: "About Harsh ki Baat",
   description:
     "Learn about Harsh ki Baat and its three YouTube channels covering Hindi news, current affairs and conversations.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about-us" },
   openGraph: {
     title: "About Harsh ki Baat",
     description:
-      "Meet Harsh Kumar and discover the three channels bringing news, views and conversations to Harsh ki Baat.",
-    images: [{ url: "/harsh-kumar.png", alt: "Harsh Kumar" }],
+      "Meet Harsh Kumar and discover three channels sharing Hindi news, reporting and analysis.",
+    images: [{ url: "/about-channel-network.jpeg", alt: "Harsh ki Baat YouTube Network" }],
   },
 };
 
@@ -24,17 +24,13 @@ export default function AboutPage() {
           <p className="eyebrow"><span /> ABOUT HARSH KI BAAT</p>
           <h1>Meet Harsh Kumar.<br /><em>Make sense of what matters.</em></h1>
           <p className="about-lede">
-            News, views and conversations for people who want to understand the stories shaping India and the world.
+            Harsh Kumar has spent more than three decades in print journalism, contributing to and holding senior roles at leading newspapers across India. Today, millions follow his reporting and commentary across social media.
           </p>
           <p>
-            Harsh ki Baat is a home for Hindi news, current affairs and analysis.
-            On the daily live programme, viewers’ questions become part of the
-            conversation—not just something to watch from the sidelines.
+            As editor-in-chief of Harsh ki Baat, he brings that experience to Hindi news, current affairs and analysis. The live programme makes space for viewers’ questions and perspectives—not just something to watch from the sidelines.
           </p>
           <p>
-            Alongside the main show, Harsh Kumar and Global Harsh bring more
-            perspectives on media, public life and the news of the day. Three
-            channels, one shared invitation: stay curious and join in.
+            His book <i>Hindutva Ki Hattrick</i> examines the 2024 Lok Sabha elections and remained an Amazon bestseller for several months, continuing to rank among its top 20 books. His latest book, <i>Amit Shah: Performer to Reformer</i>, was published in January 2025. His channel biography also notes that Amitabh Bachchan follows him on X. Explore all three channels for more conversations, reporting and perspectives.
           </p>
           <div className="about-hero-actions">
             <Link className="button button-dark" href="/videos">Explore the videos <span aria-hidden="true">↗</span></Link>
@@ -53,20 +49,14 @@ export default function AboutPage() {
           <div className="portrait-orbit portrait-orbit-two" />
           <div className="portrait-image-frame">
             <Image
-              src="/harsh-kumar.png"
-              alt="Harsh Kumar"
+              src="/about-channel-network.jpeg"
+              alt="Harsh ki Baat YouTube Network featuring Harsh ki Baat LIVE and Global Harsh"
               fill
               priority
               sizes="(max-width: 700px) 88vw, (max-width: 950px) 42vw, 440px"
               className="portrait-image"
             />
           </div>
-          <div className="portrait-caption">
-            <span className="portrait-caption-mark">HK</span>
-            <span><b>Harsh Kumar</b><small>NEWS · VIEWS · CONVERSATIONS</small></span>
-            <span className="portrait-caption-arrow" aria-hidden="true">↗</span>
-          </div>
-          <span className="portrait-index">01 <i>/</i> THE CONVERSATION</span>
         </div>
       </section>
 
@@ -81,12 +71,24 @@ export default function AboutPage() {
           </div>
           <div className="channel-cards">
             {channels.map((channel, index) => (
-              <article className={`channel-card channel-card-${channel.accent}`} key={channel.id}>
-                <div className="channel-card-top"><span>CHANNEL 0{index + 1}</span><span aria-hidden="true">↗</span></div>
+              <article className={`channel-card about-channel-card channel-card-${channel.accent}`} key={channel.id}>
+                <div className="channel-card-top">
+                  <span className="about-channel-youtube" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" /></svg>
+                  </span>
+                  <span className="about-channel-number">CHANNEL 0{index + 1}</span>
+                </div>
                 <h3>{channel.name}</h3>
                 <p>{channel.description}</p>
                 <a className="channel-card-link" href={channel.url} target="_blank" rel="noreferrer">
-                  Visit channel <span aria-hidden="true">→</span>
+                  <span className="about-channel-cta">
+                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" /></svg>
+                    <span className="about-channel-cta-copy">
+                      <small>VISIT CHANNEL</small>
+                      <b>Watch on YouTube</b>
+                    </span>
+                    <span className="about-channel-cta-arrow" aria-hidden="true">↗</span>
+                  </span>
                 </a>
               </article>
             ))}

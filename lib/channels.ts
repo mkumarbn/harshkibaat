@@ -27,11 +27,11 @@ export type ChannelFeed = {
 export const channels: Channel[] = [
   {
     id: "UCIUd9149-XvdV0giPROH-eg",
-    name: "Harsh ki Baat Live",
+    name: "Harsh ki Baat LIVE",
     handle: "@harshkibaatLIVE",
     url: "https://www.youtube.com/@harshkibaatLIVE",
     accent: "red",
-    description: "Live Hindi news, current affairs and sharp conversations.",
+    description: "Catch up on the newest clips and daily analysis.",
   },
   {
     id: "UCxhSggLG7BwfesenFaLuTMw",
@@ -39,7 +39,7 @@ export const channels: Channel[] = [
     handle: "@HarshKumarSingh",
     url: "https://www.youtube.com/@HarshKumarSingh",
     accent: "gold",
-    description: "In-depth conversations and perspectives from Harsh Kumar.",
+    description: "Breaking down news with context and clarity.",
   },
   {
     id: "UCf2b07fjX6qlQh_pPUOB2Ew",
@@ -47,7 +47,7 @@ export const channels: Channel[] = [
     handle: "@GlobalHarsh",
     url: "https://www.youtube.com/@GlobalHarsh",
     accent: "blue",
-    description: "Stories and analysis from India and around the world.",
+    description: "Daily insights into global events that shape the world.",
   },
 ];
 

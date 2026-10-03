@@ -4,6 +4,42 @@ import { channels, type Channel, type ChannelFeed, type Video } from "@/lib/chan
 const YOUTUBE_API = "https://www.googleapis.com/youtube/v3";
 const FEED_LIMIT = 15;
 
+export type ChannelStats = {
+  subscribers: string;
+  videos: string;
+};
+
+export async function getChannelStats(): Promise<ChannelStats | null> {
+  try {
+    const response = await fetch("https://www.youtube.com/@harshkibaatLIVE/featured", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+      next: { revalidate: 21_600 },
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!response.ok) {
+      throw new Error(`YouTube channel page returned ${response.status}.`);
+    }
+
+    const html = await response.text();
+    const match = html.match(
+      /"metadataParts":\[\{"text":\{"content":"([\d.,]+\s*[kKmMbB]?) subscribers"\}[\s\S]{0,400}?"text":\{"content":"([\d.,]+\s*[kKmMbB]?) videos"/i,
+    );
+    if (!match) {
+      throw new Error("YouTube channel statistics were not found in the channel page.");
+    }
+
+    const formatCount = (value: string) => value.replace(/\s*([kmb])$/i, (_, unit: string) => unit.toUpperCase());
+    return {
+      subscribers: formatCount(match[1]),
+      videos: formatCount(match[2]),
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error(`Could not load Harsh ki Baat LIVE channel statistics: ${message}`);
+    return null;
+  }
+}
+
 function decodeXml(value: string) {
   return value
     .replace(/&#x([0-9a-f]+);/gi, (_, code: string) =>

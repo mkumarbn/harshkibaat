@@ -13,6 +13,18 @@ npm run dev
 Open <http://localhost:3000>. For a production build, run `npm run build` and
 then `npm start`.
 
+## Website pages and videos
+
+The homepage is available at `/` and `/home`. It highlights recent uploads
+grouped by channel so Harsh ki Baat Live, Harsh Kumar and Global Harsh each
+have their own space. Selecting a video opens an on-site YouTube player; the
+video library at `/videos` also supports channel filters, search and sorting.
+
+The site includes `/about-us`, `/contact` and `/terms-and-conditions`. Contact
+visitors can use the email address, WhatsApp link or contact form. The terms
+page currently contains sample copy and should be replaced with approved legal
+text before publication.
+
 ## Video feeds and older videos
 
 Recent videos for Harsh ki Baat Live, Harsh Kumar and Global Harsh are rendered

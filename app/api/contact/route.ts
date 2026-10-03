@@ -159,7 +159,6 @@ export async function POST(request: NextRequest) {
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:620px;margin:0 auto;background:#ffffff;border:1px solid #e5e7eb;">
       <tr><td style="padding:24px 32px;background:#cc0000;color:#ffffff;">
         <div style="font-family:Georgia,serif;font-size:24px;font-weight:bold;letter-spacing:-.5px;">harsh ki baat</div>
-        <div style="margin-top:7px;color:#ffe5e5;font-size:11px;font-weight:bold;letter-spacing:1.5px;">NEWS · VIEWS · CONVERSATIONS</div>
       </td></tr>
       <tr><td style="padding:32px;">
         <div style="margin-bottom:11px;color:#cc0000;font-size:11px;font-weight:bold;letter-spacing:1.4px;">NEW WEBSITE MESSAGE</div>
@@ -207,7 +206,6 @@ export async function POST(request: NextRequest) {
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e5e7eb;">
       <tr><td style="padding:24px 32px;background:#cc0000;color:#ffffff;">
         <div style="font-family:Georgia,serif;font-size:24px;font-weight:bold;letter-spacing:-.5px;">harsh ki baat</div>
-        <div style="margin-top:7px;color:#ffe5e5;font-size:11px;font-weight:bold;letter-spacing:1.5px;">NEWS · VIEWS · CONVERSATIONS</div>
       </td></tr>
       <tr><td style="padding:34px 32px 28px;">
         <div style="margin-bottom:12px;color:#cc0000;font-size:11px;font-weight:bold;letter-spacing:1.5px;">MESSAGE RECEIVED</div>

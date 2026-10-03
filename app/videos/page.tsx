@@ -16,7 +16,7 @@ export default async function VideosPage() {
       <section className="page-heading section-wrap">
         <p className="eyebrow"><span /> THE VIDEO LIBRARY</p>
         <h1>Every angle.<br /><em>All in one place.</em></h1>
-        <p>New uploads and timeless conversations from all three channels.</p>
+        <p>Explore the latest videos from Harsh ki Baat LIVE, Global Harsh and Harsh Kumar. Search by topic, filter by channel, and play videos right here.</p>
       </section>
       <VideoLibrary initialFeeds={feeds} />
     </main>
