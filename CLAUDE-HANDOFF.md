@@ -24,17 +24,27 @@ updated when significant project decisions or deployment status changes.
 - Video library supports channel filtering, search, and newest/oldest sorting.
 - Use YouTube public feeds for recent videos; older-video pagination can be
   enabled with a private YouTube Data API key.
-- Use the portrait already included at `public/harsh-kumar.png`.
+- Harsh's photo is `public/harsh-kumar-portrait.jpg` (matches his YouTube
+  thumbnails); it is used large at the top of the homepage and in the header.
 - WhatsApp chat link uses the provided number in its destination URL, but never
   display the number in visible page text.
-- Current visual preference: white page background, readable/brighter text,
-  pill-style navigation, and YouTube-inspired red accents. Keep WhatsApp brand
-  styling green where appropriate.
-- Social links are in the shared site footer.
+- Current visual direction (client feedback, Oct 2026; references in `Extra/`):
+  news/media-site look — navy masthead with tab navigation, bold Mukta
+  headlines (supports Devanagari titles), Oswald for brand/badges. No
+  "Make sense of what matters" tagline.
+- Homepage: profile hero (large photo, name, Facebook/X/Instagram/YouTube
+  icons, stats, channel badges), then one section per channel with the latest
+  video large on the left and a vertical list on the right (stacked on mobile).
+- Channel colours follow the thumbnail labels: Harsh ki Baat LIVE red, Global
+  Harsh blue, Harsh Kumar purple (`accent` in `lib/channels.ts`).
+- Social icon paths and links live in `components/social-icon.tsx`; social
+  links also appear in the shared site footer.
 
 ## Current pages and key files
 
-- `app/page.tsx` — homepage and latest videos.
+- `app/page.tsx`, `components/channel-section.tsx`,
+  `components/channel-badge.tsx` — homepage hero and per-channel video blocks.
+- `components/main-nav.tsx` — header tab navigation with active state.
 - `app/videos/page.tsx`, `components/video-library.tsx` — video library and
   channel/search/sort controls.
 - `app/about/page.tsx` — About content and portrait.

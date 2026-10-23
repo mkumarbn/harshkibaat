@@ -98,7 +98,9 @@ export default function VideoLibrary({ initialFeeds }: { initialFeeds: ChannelFe
         <div className="filter-tabs" role="group" aria-label="Filter videos by channel">
           <button type="button" aria-pressed={selectedChannel === "all"} className={selectedChannel === "all" ? "active" : ""} onClick={() => setSelectedChannel("all")}>All channels</button>
           {channels.map((channel) => (
-            <button type="button" aria-pressed={selectedChannel === channel.id} className={selectedChannel === channel.id ? "active" : ""} key={channel.id} onClick={() => setSelectedChannel(channel.id)}>{channel.name}</button>
+            <button type="button" aria-pressed={selectedChannel === channel.id} className={`channel-${channel.accent}${selectedChannel === channel.id ? " active" : ""}`} key={channel.id} onClick={() => setSelectedChannel(channel.id)}>
+              <span className="filter-dot" aria-hidden="true" />{channel.name}
+            </button>
           ))}
         </div>
         <div className="library-tools">

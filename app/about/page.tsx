@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="about-hero section-wrap">
         <div className="about-intro-copy">
           <p className="eyebrow"><span /> ABOUT HARSH KI BAAT</p>
-          <h1>Meet Harsh Kumar.<br /><em>Make sense of what matters.</em></h1>
+          <h1>Meet <em>Harsh Kumar.</em></h1>
           <p className="about-lede">
             Harsh Kumar has spent more than three decades in print journalism, contributing to and holding senior roles at leading newspapers across India. Today, millions follow his reporting and commentary across social media.
           </p>

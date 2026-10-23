@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import type { Video } from "@/lib/channels";
+import { findChannel, type Video } from "@/lib/channels";
 
 export default function VideoPlayerButton({
   video,
@@ -67,7 +67,7 @@ export default function VideoPlayerButton({
             if (event.target === event.currentTarget) setIsOpen(false);
           }}
         >
-          <section className="video-modal" role="dialog" aria-modal="true" aria-label={video.title} onKeyDown={trapDialogFocus}>
+          <section className={`video-modal channel-${findChannel(video.channelId)?.accent ?? "red"}`} role="dialog" aria-modal="true" aria-label={video.title} onKeyDown={trapDialogFocus}>
             <div className="video-modal-heading">
               <p>{video.channelName}</p>
               <button ref={closeRef} type="button" className="video-modal-close" onClick={() => setIsOpen(false)} aria-label="Close video">

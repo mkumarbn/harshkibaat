@@ -3,7 +3,7 @@ export type Channel = {
   name: string;
   handle: string;
   url: string;
-  accent: "red" | "gold" | "blue";
+  accent: "red" | "purple" | "blue";
   description: string;
 };
 
@@ -34,14 +34,6 @@ export const channels: Channel[] = [
     description: "Catch up on the newest clips and daily analysis.",
   },
   {
-    id: "UCxhSggLG7BwfesenFaLuTMw",
-    name: "Harsh Kumar",
-    handle: "@HarshKumarSingh",
-    url: "https://www.youtube.com/@HarshKumarSingh",
-    accent: "gold",
-    description: "Breaking down news with context and clarity.",
-  },
-  {
     id: "UCf2b07fjX6qlQh_pPUOB2Ew",
     name: "Global Harsh",
     handle: "@GlobalHarsh",
@@ -49,8 +41,23 @@ export const channels: Channel[] = [
     accent: "blue",
     description: "Daily insights into global events that shape the world.",
   },
+  {
+    id: "UCxhSggLG7BwfesenFaLuTMw",
+    name: "Harsh Kumar",
+    handle: "@HarshKumarSingh",
+    url: "https://www.youtube.com/@HarshKumarSingh",
+    accent: "purple",
+    description: "Breaking down news with context and clarity.",
+  },
 ];
 
 export function findChannel(id: string) {
   return channels.find((channel) => channel.id === id);
+}
+
+export function formatVideoDate(publishedAt: string) {
+  const published = new Date(publishedAt);
+  return Number.isNaN(published.getTime())
+    ? "Recently published"
+    : new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(published);
 }
