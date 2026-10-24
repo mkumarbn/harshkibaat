@@ -89,8 +89,8 @@ Everything inside uses `var(--channel)`, so one class colours the whole block.
 
 | Where | Class added by | What gets coloured |
 | --- | --- | --- |
-| Homepage channel section | `components/channel-section.tsx` | Top stripe, tinted background, heading underline, thumbnail bars, play buttons, "Latest" tag |
-| Video card (Videos page) | `components/video-card.tsx` | Channel tag on thumbnail, bar under thumbnail, play button, channel name |
+| Homepage channel section | `components/channel-section.tsx` | Top stripe, tinted background, heading underline, thumbnail bars, play buttons, "Latest" pill and channel name below the lead video |
+| Video card (Videos page) | `components/video-card.tsx` | Channel name pill below the thumbnail, bar under thumbnail, play button |
 | Filter buttons | `components/video-library.tsx` | Dot, border, filled background when selected |
 | Video popup | `components/video-player.tsx` | Top border and channel label |
 | Channel badge | `components/channel-badge.tsx` | Pill border and glow (styled like the thumbnail labels) |
@@ -145,6 +145,13 @@ client's approval before changing it.
 - The four hero social icons (YouTube, Facebook, Instagram, X) sit on one
   line under "Harsh ki Baat" on every device. On phones they shrink to fit
   instead of wrapping (client request, Oct 2026).
+- Never put text over a thumbnail. The thumbnails already carry big Hindi
+  headlines, and the client said a "LATEST" tag on top was blocking the title.
+  Labels go below the image (`.video-label`): a "● LATEST" pill plus the
+  channel name on the homepage lead video, and a channel-coloured name pill
+  on Videos page cards. Only the small round play button sits on the image.
+- Draw play icons with `components/play-icon.tsx`, not the ▶ character, which
+  iPhones show as a grey emoji box.
 - Homepage thumbnails keep their `<img>` in normal flow, with `aspect-ratio`
   set on the image itself. Don't switch them to `next/image` `fill` inside the
   play buttons: buttons don't reliably apply `aspect-ratio` in every browser,
@@ -170,8 +177,5 @@ client's approval before changing it.
 
 ## Open items
 
-- The channel tag on video-card thumbnails sits in the top-left corner and can
-  slightly cover the Hindi headline printed on some thumbnails. Move it below
-  the thumbnail if the client minds.
 - The client hasn't yet approved the hero description wording.
 - The terms page still has sample text (see `README.md`).

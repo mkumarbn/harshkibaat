@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import MainNav from "@/components/main-nav";
+import PlayIcon from "@/components/play-icon";
 import SocialIcon, { socialLinks } from "@/components/social-icon";
 import "./globals.css";
 
@@ -72,7 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               ))}
             </nav>
             <a className="header-subscribe" href="https://www.youtube.com/@harshkibaatLIVE" target="_blank" rel="noreferrer">
-              <span aria-hidden="true">▶</span> Subscribe
+              <PlayIcon /> Subscribe
             </a>
           </div>
           <MainNav />

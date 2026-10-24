@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ChannelBadge from "@/components/channel-badge";
+import PlayIcon from "@/components/play-icon";
 import VideoPlayerButton from "@/components/video-player";
 import { formatVideoDate, type ChannelFeed } from "@/lib/channels";
 
@@ -25,18 +26,18 @@ export default function ChannelSection({ feed }: { feed: ChannelFeed }) {
             <article className="lead-video">
               <VideoPlayerButton className="lead-video-thumb" video={lead} ariaLabel={`Play: ${lead.title}`}>
                 <Image src={lead.thumbnail} alt="" width={480} height={360} unoptimized />
-                <span className="lead-video-play" aria-hidden="true">▶</span>
-                <span className="lead-video-tag">Latest</span>
+                <span className="lead-video-play"><PlayIcon /></span>
               </VideoPlayerButton>
+              <p className="video-label">
+                <span className="video-label-latest">Latest</span>
+                <span className="video-label-channel">{channel.name}</span>
+              </p>
               <h3>
                 <VideoPlayerButton className="video-title-button" video={lead} ariaLabel={`Play: ${lead.title}`}>
                   {lead.title}
                 </VideoPlayerButton>
               </h3>
-              <p className="video-byline">
-                <span>{channel.name}</span>
-                <time dateTime={lead.publishedAt}>{formatVideoDate(lead.publishedAt)}</time>
-              </p>
+              <time className="video-date" dateTime={lead.publishedAt}>{formatVideoDate(lead.publishedAt)}</time>
             </article>
 
             <ol className="video-list" aria-label={`More from ${channel.name}`}>
@@ -44,7 +45,7 @@ export default function ChannelSection({ feed }: { feed: ChannelFeed }) {
                 <li className="video-list-item" key={video.id}>
                   <VideoPlayerButton className="video-list-thumb" video={video} ariaLabel={`Play: ${video.title}`}>
                     <Image src={video.thumbnail} alt="" width={480} height={360} unoptimized loading="lazy" />
-                    <span className="video-list-play" aria-hidden="true">▶</span>
+                    <span className="video-list-play"><PlayIcon /></span>
                   </VideoPlayerButton>
                   <div className="video-list-body">
                     <h4>
