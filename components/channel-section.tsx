@@ -24,7 +24,7 @@ export default function ChannelSection({ feed }: { feed: ChannelFeed }) {
           <div className="channel-section-grid">
             <article className="lead-video">
               <VideoPlayerButton className="lead-video-thumb" video={lead} ariaLabel={`Play: ${lead.title}`}>
-                <Image src={lead.thumbnail} alt="" fill unoptimized sizes="(max-width: 900px) 100vw, 60vw" />
+                <Image src={lead.thumbnail} alt="" width={480} height={360} unoptimized />
                 <span className="lead-video-play" aria-hidden="true">▶</span>
                 <span className="lead-video-tag">Latest</span>
               </VideoPlayerButton>
@@ -43,7 +43,7 @@ export default function ChannelSection({ feed }: { feed: ChannelFeed }) {
               {rest.slice(0, LIST_LENGTH).map((video) => (
                 <li className="video-list-item" key={video.id}>
                   <VideoPlayerButton className="video-list-thumb" video={video} ariaLabel={`Play: ${video.title}`}>
-                    <Image src={video.thumbnail} alt="" fill unoptimized loading="lazy" sizes="180px" />
+                    <Image src={video.thumbnail} alt="" width={480} height={360} unoptimized loading="lazy" />
                     <span className="video-list-play" aria-hidden="true">▶</span>
                   </VideoPlayerButton>
                   <div className="video-list-body">

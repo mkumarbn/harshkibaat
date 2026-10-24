@@ -36,7 +36,10 @@ updated when significant project decisions or deployment status changes.
   icons, stats, channel badges), then one section per channel with the latest
   video large on the left and a vertical list on the right (stacked on mobile).
 - Channel colours follow the thumbnail labels: Harsh ki Baat LIVE red, Global
-  Harsh blue, Harsh Kumar purple (`accent` in `lib/channels.ts`).
+  Harsh blue, Harsh Kumar purple (`accent` in `lib/channels.ts`). Sections,
+  video cards, filters and the video popup are colour-coded by channel.
+- Full design details, client feedback history and design rules are in
+  `DESIGN-GUIDE.md`. Keep it updated when the design changes.
 - Social icon paths and links live in `components/social-icon.tsx`; social
   links also appear in the shared site footer.
 

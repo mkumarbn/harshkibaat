@@ -77,20 +77,33 @@ function parseFeed(xml: string, channel: Channel): Video[] {
   }).filter((video) => video.id && video.title);
 }
 
+// YouTube's public feeds fail intermittently, so retry before giving up;
+// otherwise one bad response leaves the channel empty until the next revalidation.
+const FEED_ATTEMPTS = 3;
+
 async function fetchFeed(channel: Channel): Promise<ChannelFeed> {
-  const response = await fetch(
-    `https://www.youtube.com/feeds/videos.xml?channel_id=${encodeURIComponent(channel.id)}`,
-    { next: { revalidate: 900 } },
-  );
-  if (!response.ok) {
-    throw new Error(`YouTube feed returned ${response.status} for ${channel.name}.`);
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= FEED_ATTEMPTS; attempt++) {
+    try {
+      const response = await fetch(
+        `https://www.youtube.com/feeds/videos.xml?channel_id=${encodeURIComponent(channel.id)}`,
+        { next: { revalidate: 900 }, signal: AbortSignal.timeout(10_000) },
+      );
+      if (!response.ok) {
+        throw new Error(`YouTube feed returned ${response.status} for ${channel.name}.`);
+      }
+      const xml = await response.text();
+      const videos = parseFeed(xml, channel);
+      if (!videos.length) {
+        throw new Error(`YouTube feed for ${channel.name} contained no videos.`);
+      }
+      return { channel, videos: videos.slice(0, FEED_LIMIT), nextPageToken: null };
+    } catch (error) {
+      lastError = error;
+      if (attempt < FEED_ATTEMPTS) await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
+    }
   }
-  const xml = await response.text();
-  return {
-    channel,
-    videos: parseFeed(xml, channel).slice(0, FEED_LIMIT),
-    nextPageToken: null,
-  };
+  throw lastError;
 }
 
 async function fetchApiVideos(
@@ -173,8 +186,9 @@ export async function getRecentFeeds(): Promise<ChannelFeed[]> {
       return process.env.YOUTUBE_API_KEY
         ? await fetchApiVideos(channel, undefined, FEED_LIMIT)
         : await fetchFeed(channel);
-    } catch {
-      console.error(`Could not load the ${channel.name} YouTube feed.`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      console.error(`Could not load the ${channel.name} YouTube feed: ${message}`);
       return {
         channel,
         videos: [],
